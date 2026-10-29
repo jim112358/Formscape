@@ -2,6 +2,12 @@
 
 用数学表达式探索二维曲线和三维曲面。浏览器本地运行，无外部依赖。
 
+## 在线使用
+
+[打开 Formscape](https://jim112358.github.io/Formscape/)，无需安装。
+
+GitHub Pages 使用 `.github/workflows/pages.yml` 自动部署；推送到 main 时先运行测试，再发布静态文件。仓库 Settings → Pages 的 Source 应设为 GitHub Actions。
+
 ## 运行
 
 需要 Node.js 20 或更新版本。
