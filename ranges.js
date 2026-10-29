@@ -1,0 +1,4 @@
+import {compile} from './math.js';
+export function readRange(min,max){const lo=compile(min)({}),hi=compile(max)({});if(!Number.isFinite(lo)||!Number.isFinite(hi)||hi<=lo||hi-lo>1e9)throw Error('范围终点必须大于起点，且跨度不超过 10⁹');return[lo,hi];}
+export function autoRange(values){const a=values.filter(Number.isFinite).sort((x,y)=>x-y);if(!a.length)return[-1,1];let lo=a[0],hi=a.at(-1);if(a.length>100){const q1=a[Math.floor(a.length*.25)],q3=a[Math.floor(a.length*.75)],iqr=q3-q1;if(iqr>0){const trimmed=a.filter(x=>x>=q1-6*iqr&&x<=q3+6*iqr);lo=trimmed[0];hi=trimmed.at(-1);}}const pad=(hi-lo||Math.max(1,Math.abs(lo)))*.08;return[lo-pad,hi+pad];}
+export function migrateRanges(s){s.axes??={x:{min:s.min||'-6.28',max:s.max||'6.28',auto:false},y:{min:s.min||'-6.28',max:s.max||'6.28',auto:true},z:{min:'-5',max:'5',auto:true}};s.domains??={t:{min:s.min||'0',max:s.max||'2*pi'},u:{min:'0',max:'2*pi'},v:{min:'0',max:'2*pi'}};return s;}
